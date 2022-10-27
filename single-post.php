@@ -1,114 +1,190 @@
 <?php get_header(); ?>
 
-  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-  <?php $img = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 5600,1000 ), false, '' ); ?>
-
-  <div class="content-hero">
-    <img src="<?php echo $img[0]; ?>" />
-  </div>
-
-  <div class="content-container faded">
-    <div class="single__post-cat">
-      <?php the_category(', ') ?>
+<section class="single__hero">
+  <div class="single__hero-background">
+    <div class="single__hero-left">
+      <span class="single__hero-date"><?php the_date(); ?></span>
+      <h1><?php the_title(); ?></h1>
+      <span class="cats"><span class="posted-in">Posted In: </span><?php the_category(', ') ?></span>
     </div>
-    <h1><?php the_title(); ?></h1>
-    <div class="single-content" style="margin-bottom: 3rem;">
-      <span class="post-date"><?php the_date(); ?></span>
-      <img src="<?php echo $img[0]; ?>" />
+    <div class="single__hero-right">
+      <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(),'full'); ?>" />
+    </div>
+  </div>
+  <div class="single__hero-container"></div>
+</section>
+
+<section>
+  <div class="single__content">
+    <div class="single__content-content">
       <?php the_content(); ?>
     </div>
-
-    <?php if( is_singular('post')): ?><?php if (!dynamic_sidebar( 'After Blog Post' )):?><?php endif; ?><?php endif; ?>
-
-    <?php if( is_single() ) : ?>
-
-    <?php  foreach (get_comments() as $comment): ?>
-        <div><?php echo $comment->comment_author; ?> said: "<?php echo $comment->comment_content; ?>".</div>
-        <?php endforeach; ?>
-    <?php comments_template(); ?>
-
-    <?php endif; // close to check single.php ?>
-
+    <div class="single__content-sidebar">
+		<?php if ( is_active_sidebar( 'sidebar_content' ) ) : ?>
+			<?php dynamic_sidebar( 'sidebar_content' ); ?>
+		<?php endif; ?>
+    </div>
   </div>
-
-  <?php endwhile; endif; ?>
+</section>
 
 <style>
-.row {
-  width: 100%;
-}
-.background {
-  background: white;
-}
-.single__post-cat {
-  margin-bottom: 3rem;
-  display: block;
-}
-.single__post-cat a {
-  font-size: 12px;
-  color: white;
-  background: var(--primary);
-  padding: 6px 14px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 2px;;
-}
-.single-content img {
-  margin-bottom: 45px;
-  width: 100%;
-}
-.post-date {
-  font-size: 18px;
-  color: #666;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 32px;
-  padding-top: 26px;
-  display: block;
-  width: 100%;
-  border-top: 1px dashed rgba(0,0,0,.1);
-}
-.content-hero {
-  position: relative;
-  overflow: hidden;
-  height: 350px;
-  background: #212121;
-}
-.content-hero img {
-  position: absolute;
-  width: 110%;
-  height: 110%;
-  top: -5%;
-  left: 0;
-  object-fit: cover;
-  filter: blur(10px);
-  opacity: .9;
-}
-.content-container {
-  background: white;
-  padding: 5rem 6rem;
-  border-top: 6px solid var(--primary);
-  max-width: 1000px;
-  margin: 0 auto;
-  transform: translateY(-220px);
-  -webkit-box-shadow: 0px -14px 43px -4px rgba(0,0,0,0.25);
-  box-shadow: 0px -14px 43px -4px rgba(0,0,0,0.25);
-}
-.container {
-  position: relative;
-  width: 1400px;
-  max-width: 100%;
-  padding: 5rem 2.5rem;
-  margin: 3rem auto;
-}
 
-.content-container h1 {
-  font-size: 40px;
-  margin-bottom: 32px;
-  max-width: 85%;
-}
-.single-content p {
-  font-size: 20px;
-}
+  header.header {
+    display: none !important;
+  }
+
+  h1, h2, h3, h4, h5 {
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-align: left;
+    margin: 3rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    max-width: 90%;
+  }
+  p {
+    margin-bottom: 1rem !important;
+  }
+  }
+  h1 {
+    font-size: 3.5rem !important;
+  }
+  h2 {
+    font-size: 3rem !important;
+  }
+  h3 {
+    font-size: 2.75rem !important;
+  }
+  h4 {
+    font-size: 2.5rem !important;
+  }
+  h5 {
+    font-size: 2.25rem !important;
+  }
+  .single__hero {
+    height: 525px;
+    background: #212121;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+  }
+  .single__hero-background {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    height: 100%;
+    width: 100%;
+  }
+  .single__hero-left {
+    grid-column: span 3 / span 3;
+    background: #212121;
+    padding: 5rem 3rem;
+  }
+  .single__hero-left h1 {
+    color: white;
+    line-height: 1.1;
+    margin: 0;
+  }
+  .single__hero-date {
+    color: #ff797c;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .single__hero-right {
+    grid-column: span 4 / span 4;
+    position: relative;
+    overflow: hidden;
+  }
+  .single__hero-right img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .single__content {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-gap: 6rem;
+    width: 1200px;
+    padding: 3rem 0;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+  }
+  .single__content ul {
+    padding-left: 1rem;
+    margin: 0 1rem;
+  }
+  .single__content ul li {
+    margin-bottom: 1rem;
+  }
+  .single__content-content {
+    grid-column: span 8 / span 8;
+  }
+  .single__content-sidebar {
+    grid-column: span 4 / span 4;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+  .cats {
+    position: absolute;
+    bottom: 4rem;
+    font-size: 16px;
+  }
+  .cats a {
+    color: #ff797c;
+  }
+  .posted-in {
+    color: white;
+    font-weight: 600;
+  }
+  
+  
+  footer {
+    border-top: 1px solid rgba(0,0,0,.2);
+  }
+  
+  @media(max-width: 992px) {
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+      }
+      h4 {
+        font-size: 1.25rem;
+      }
+      h5 {
+        font-size: 15rem;
+      }
+    .single__hero {
+      height: auto;
+    }
+    .single__hero-background {
+      display: block;
+    }
+    .single__hero-right {
+      height: 300px;
+    }
+    .single__content {
+      padding: 0 1rem;
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+    }
+   .single__hero-left {
+     padding: 2.5rem 1.5rem;
+   }
+   .cats {
+     position: relative;
+     bottom: auto;
+   }
+  }
 </style>
+
 <?php get_footer(); ?>

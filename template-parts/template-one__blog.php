@@ -9,12 +9,12 @@
     <div class="single__post faded">
       <a href="<?php the_permalink(); ?>" class="single__post-image" <?php if($img) : ?>style="background-image: url(<?php echo $img[0]; ?>);"<?php endif; ?>></a>
       <div class="single__post-content">
-        <div class="single__post-cat">
-          <?php the_category(', ') ?>
-        </div>
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <p><?php echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p>
-        <a href="<?php the_permalink(); ?>" class="button">View Post</a>
+        <!-- <p><?php // echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p> -->
+        <!-- <a href="<?php // the_permalink(); ?>" class="button">View Post</a> -->
+        <div class="single__post-cat">
+          <span><?php echo the_date(); ?></span><br /><?php the_category(', ') ?>
+        </div>
       </div>
     </div>
 
@@ -29,12 +29,11 @@
 
 
 <style>
-.container {
+.containe {
   position: relative;
   width: 1400px;
   max-width: 100%;
-  padding: 5rem 2.5rem;
-  margin: 3rem auto;
+  padding: 0 2.5rem;
 }
 #sidebar {
   display: none;
@@ -43,75 +42,56 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 4rem;
+  width: 1300px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .single__post {
-  border: 2px solid rgba(0,0,0,.05);
-  background: white;
+  text-align: left;
 }
 .single__post p {
   font-size: 18px;
   color: #888;
 }
 .single__post {
-  grid-column: span 6 / span 6;
+  grid-column: span 4 / span 4;
   transition: all .3s ease !important;
   display: block;
   position: relative;
 }
-.single__post:hover {
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  transform: translateY(-6px) !important;
-}
-.single__post:nth-child(1), .single__post:nth-child(2), .single__post:nth-child(3) {
-  grid-column: span 4 / span 4;
-}
-.single__post:nth-child(6), .single__post:nth-child(7), .single__post:nth-child(8), .single__post:nth-child(9) {
-  grid-column: span 6 / span 6;
-}
 .single__post-content {
-  padding: 2.5rem;
+  padding: 0;
+}
+.single__post h2 {
+  text-align: left;
+  margin-bottom: 1rem;
+  margin-top: 0;
 }
 .single__post h2, .single__post h2 a {
   font-size: 20px;
-  color: #212121;
+  color: #ff574b;
 }
 .single__post .single__post-image {
   display: block;
   background: #efefef;
   margin-bottom: 16px;
-  height: 400px;
+  height: 225px;
   background-size: cover;
   background-position: center;
 }
-.single__post:nth-child(1) .single__post-image, .single__post:nth-child(2) .single__post-image, .single__post:nth-child(3) .single__post-image {
-  display: block;
-  background: #efefef;
-  margin-bottom: 16px;
-  height: 235px;
-  background-size: cover;
-  background-position: center;
-}
-.single__post .single__post-image:nth-child(6) {
-  display: block;
-  background: #efefef;
-  margin-bottom: 16px;
-  height: 800px;
-  background-size: cover;
-  background-position: center;
-}
-.single__post-cat {
-  margin-bottom: 3rem;
-  display: block;
+
+.single__post-cat, .single__post-cat a {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+  margin-top: 0.15rem;
 }
 .single__post-cat a {
-  font-size: 12px;
-  color: white;
-  background: #212121;
-  padding: 6px 14px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  letter-spacing: 2px;;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 14px;
 }
+
 .single__post .button {
   border: 2px solid rgba(0,0,0,.05);
   padding: 16px;
@@ -135,8 +115,12 @@
 
 
 @media(max-width: 992px) {
+  .post-grid {
+    display: block;
+    padding: 1rem;
+  }
   .single__post {
-    grid-column: span 12 / span 12 !important;
+    margin-bottom: 2rem;
   }
 }
 </style>
