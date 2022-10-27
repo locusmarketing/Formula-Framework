@@ -2460,7 +2460,9 @@ if( function_exists('acf_add_options_page') ) {
 
 /* Custom WP Bakery Blog
 ------------------------------- */
-require_once( get_template_directory().'/template-parts/vc-blog.php' );
+if ( defined( 'WPB_VC_VERSION' ) ) {
+	require_once( get_template_directory().'/template-parts/vc-blog.php' );
+}
 
 /* Mobile Detection
 ------------------------------- */
