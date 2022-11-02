@@ -81,7 +81,6 @@
     margin: 0;
   }
   .single__hero-date {
-    color: #ff797c;
     font-size: 0.85rem;
     margin-bottom: 1rem;
     display: block;
@@ -130,13 +129,18 @@
     font-size: 16px;
   }
   .cats a {
-    color: #ff797c;
+    font-weight: 700;
   }
   .posted-in {
     color: white;
     font-weight: 600;
   }
-  
+  .panel, .sticky {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0 1rem;
+  }
   
   footer {
     border-top: 1px solid rgba(0,0,0,.2);
@@ -144,7 +148,7 @@
   
   @media(max-width: 992px) {
       h1 {
-        font-size: 2rem;
+        font-size: 3.5rem;
       }
       h2 {
         font-size: 1.75rem;

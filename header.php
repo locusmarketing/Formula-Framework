@@ -37,7 +37,7 @@ if( is_front_page() )
 <?php endif; ?>
 </head>
 
-<body class="<?php hybrid_body_class(); ?> <?php echo body_class(); ?>" id="locus-marketing">
+<body class="<?php hybrid_body_class(); ?> <?php body_class(); ?>" id="locus-marketing">
 <?php do_action('fb_after_body'); //get_template_part( 'menu', 'secondary' ); // Loads the menu-primary.php template. ?>
 <?php echo hybrid_get_setting('misc_after_body'); ?>
 <div class="fwf-root">

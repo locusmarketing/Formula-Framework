@@ -13,27 +13,40 @@
         <!-- <p><?php // echo wp_trim_words(get_the_excerpt(), 30, '...'); ?></p> -->
         <!-- <a href="<?php // the_permalink(); ?>" class="button">View Post</a> -->
         <div class="single__post-cat">
-          <span><?php echo the_date(); ?></span><br /><?php the_category(', ') ?>
+          <span class="date-posted"><?php echo get_the_date(); ?></span>
+          <span class="posted-in">Posted In: </span><?php the_category(', ') ?>
         </div>
       </div>
     </div>
 
   <?php endwhile; ?>
 
-<?php wp_reset_postdata(); ?>
+  <?php wp_reset_postdata(); ?>
 
-</div>
+  </div>
 </div>
 
 
 
 
 <style>
-.containe {
-  position: relative;
-  width: 1400px;
-  max-width: 100%;
-  padding: 0 2.5rem;
+html, body {
+  background: #f9f9f9;
+}
+header.header {
+  background: white;
+}
+.container {
+  padding: 5rem 0;
+}
+.posted-in {
+  font-size: 14px;
+  margin-top: 0;
+}
+.date-posted {
+  font-weight: 800;
+  display: block;
+  margin-bottom: 6px;
 }
 #sidebar {
   display: none;
@@ -41,13 +54,22 @@
 .post-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 4rem;
-  width: 1300px;
+  gap: 3rem;
+  padding: 0 2rem;
+  width: 1400px;
   max-width: 100%;
   margin: 0 auto;
 }
 .single__post {
   text-align: left;
+  padding: 2rem;
+  background: white;
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: 5px;
+  transition: all .3s ease;
+}
+.single__post:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 .single__post p {
   font-size: 18px;
@@ -66,10 +88,11 @@
   text-align: left;
   margin-bottom: 1rem;
   margin-top: 0;
+  line-height: 1.4;
 }
 .single__post h2, .single__post h2 a {
   font-size: 20px;
-  color: #ff574b;
+  transition: all .3s ease;
 }
 .single__post .single__post-image {
   display: block;
@@ -78,6 +101,8 @@
   height: 225px;
   background-size: cover;
   background-position: center;
+  border-radius: 5px;
+  transition: all .3s ease;
 }
 
 .single__post-cat, .single__post-cat a {
