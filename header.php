@@ -37,7 +37,7 @@ if( is_front_page() )
 <?php endif; ?>
 </head>
 
-<body class="<?php hybrid_body_class(); ?>" id="locus-marketing">
+<body class="<?php hybrid_body_class(); ?> <?php echo body_class(); ?>" id="locus-marketing">
 <?php do_action('fb_after_body'); //get_template_part( 'menu', 'secondary' ); // Loads the menu-primary.php template. ?>
 <?php echo hybrid_get_setting('misc_after_body'); ?>
 <div class="fwf-root">
@@ -105,7 +105,7 @@ if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar( 'top_bar' ) ) { //
 
 <?php endif; ?>
 
-<?php if( isUserAgentMobile() ): //Show on mobile only 
+<?php
     $logoimg_url = ( $mobile_img = get_theme_mod( $prefix.'_logo_mobile' ) ) ? $mobile_img : get_theme_mod( $prefix.'_logo' );
 ?>
 <div class="mobile__nav">
@@ -169,4 +169,3 @@ if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar( 'top_bar' ) ) { //
 		});
 	});
 </script>
-<?php endif; //End mobile ?>

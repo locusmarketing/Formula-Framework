@@ -610,17 +610,6 @@ function pdw_spine_register_sidebars(){
 			'after_title' => '-->'
 		)
 	);
-	register_sidebar(
-		array(
-			'id' => 'sidebar_content',
-			'name' => __( 'Sidebar Content', 'fitnessthemes' ),
-			'description' => __( 'Append content to the blog sidebar','spine' ),
-			'before_widget' => '<div id="%1$s" class="sidebar_content">',
-			'after_widget' => '</div>',
-			'before_title' => '<!--',
-			'after_title' => '-->'
-		)
-	);
 
 }
 

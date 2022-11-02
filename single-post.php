@@ -20,19 +20,15 @@
       <?php the_content(); ?>
     </div>
     <div class="single__content-sidebar">
-		<?php if ( is_active_sidebar( 'sidebar_content' ) ) : ?>
-			<?php dynamic_sidebar( 'sidebar_content' ); ?>
+		<?php if ( is_active_sidebar( 'primary' ) ) : ?>
+			<?php dynamic_sidebar( 'primary' ); ?>
 		<?php endif; ?>
     </div>
   </div>
 </section>
 
 <style>
-
-  header.header {
-    display: none !important;
-  }
-
+  
   h1, h2, h3, h4, h5 {
     line-height: 1.3;
     letter-spacing: 0;
