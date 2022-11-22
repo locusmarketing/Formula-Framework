@@ -2099,7 +2099,6 @@ function add_async_attribute($tag, $handle) {
     return str_replace( ' src', ' data-pagespeed-no-defer src', $tag );
 }
 
-
 /////////// Sub-site Exceptions ////////////
 add_action( 'template_redirect', 'fwf_process_user' );
 function fwf_process_user() {
@@ -2240,7 +2239,6 @@ function fwf_menu_extra_content($items, $args) {
         return $items;
 }
 
-
 // fixes "Lost Password?" URLs on login page
 add_filter("lostpassword_url", function ($url, $redirect) {
 
@@ -2294,9 +2292,6 @@ function fwf_custom_robots( $output, $public ) {
 }
 
 add_filter( 'robots_txt', 'fwf_custom_robots', 20, 2 );
-
-
-
 
 add_action('admin_head', 'fwf_block_styles');
 
