@@ -1961,7 +1961,10 @@ header.header .mobile__nav-social .member_login {
 	font-size: 90%;
 }
 
-
+.singular-post .row {
+  max-width: 100% !important;
+  width: 100%;
+}
 @media(max-width: 992px) {
 	.single__hero-left h1 {
 		padding-top: 6rem;
