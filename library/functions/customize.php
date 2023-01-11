@@ -384,4 +384,68 @@ function hybrid_customize_preview_script() {
 	<?php
 }
 
+
+function mobile_register($wp_customize){
+
+	$wp_customize->add_section('themename_color_scheme', array(
+			'title'    => __('Mobile Navigation Options', 'themename'),
+			'description' => '',
+			'priority' => 120,
+	));
+
+	//  =============================
+	//  = Background Color Picker              =
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[bg_color]', array(
+			'default'           => '#0000',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'capability'        => 'edit_theme_options',
+			'type'           => 'option',
+
+	));
+
+	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'link_color', array(
+			'label'    => __('Mobile Menu Background Color', 'themename'),
+			'section'  => 'themename_color_scheme',
+			'settings' => 'themename_theme_options[bg_color]',
+	)));
+
+	//  =============================
+	//  = Links Color Picker              =
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[link_color]', array(
+		'default'           => '#fff',
+		'sanitize_callback' => 'sanitize_hex_color',
+		'capability'        => 'edit_theme_options',
+		'type'           => 'option',
+
+));
+
+$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'link_color', array(
+	'label'    => __('Mobile Menu Link Color', 'themename'),
+	'section'  => 'themename_color_scheme',
+	'settings' => 'themename_theme_options[link_color]',
+)));
+
+$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'bg_color', array(
+	'label'    => __('Mobile Menu Background Color', 'themename'),
+	'section'  => 'themename_color_scheme',
+	'settings' => 'themename_theme_options[bg_color]',
+)));
+
+
+$wp_customize->add_setting('_s_f_slide_cat', array(
+	'default'        => $default
+));
+$wp_customize->add_control( 'cat_select_box', array(
+	'settings' => '_s_f_slide_cat',
+	'label'   => 'Select Category:',
+	'section'  => '_s_f_home_slider',
+	'type'    => 'select',
+	'choices' => $cats,
+));
+}
+
+add_action('customize_register', 'mobile_register');
+
 ?>
