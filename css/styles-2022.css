@@ -1960,7 +1960,9 @@ header.header .mobile__nav-social .member_login {
     margin-left: 1%;
 	font-size: 90%;
 }
-
+.row {
+	width: auto;
+}
 .singular-post .row {
   max-width: 100% !important;
   width: 100%;
