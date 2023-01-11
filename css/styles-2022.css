@@ -19,7 +19,6 @@ h1, h2, h3, h4, h5 {
 /* Main Container
 ----------------------------- */
 .row {
-	width: 1400px;
 	max-width: 100%;
 	min-width: 0;
 	margin: 0 auto;
@@ -44,7 +43,6 @@ h1, h2, h3, h4, h5 {
 ----------------------------- */
 .header .row {
   max-width: 100%;
-  width: 1400px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -283,7 +281,6 @@ input[type="submit"]:hover, .fwf-button:hover {
 }
 
 .row {
-	width: 1650px;
 	max-width: 100%;
 	min-width: 0;
 	margin: 0 auto;
@@ -1962,4 +1959,11 @@ header.header .mobile__nav-social li {
 header.header .mobile__nav-social .member_login {
     margin-left: 1%;
 	font-size: 90%;
+}
+
+
+@media(max-width: 992px) {
+	.single__hero-left h1 {
+		padding-top: 6rem;
+	}
 }
