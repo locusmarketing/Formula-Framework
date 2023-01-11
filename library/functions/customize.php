@@ -385,7 +385,7 @@ function hybrid_customize_preview_script() {
 }
 
 
-function mobile_register($wp_customize){
+function mobile_register($wp_customize) {
 
 	$wp_customize->add_section('themename_color_scheme', array(
 			'title'    => __('Mobile Navigation Options', 'themename'),
@@ -401,51 +401,135 @@ function mobile_register($wp_customize){
 			'sanitize_callback' => 'sanitize_hex_color',
 			'capability'        => 'edit_theme_options',
 			'type'           => 'option',
-
 	));
 
-	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'link_color', array(
+	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'bg_color', array(
 			'label'    => __('Mobile Menu Background Color', 'themename'),
 			'section'  => 'themename_color_scheme',
 			'settings' => 'themename_theme_options[bg_color]',
 	)));
 
+
 	//  =============================
 	//  = Links Color Picker              =
 	//  =============================
 	$wp_customize->add_setting('themename_theme_options[link_color]', array(
-		'default'           => '#fff',
-		'sanitize_callback' => 'sanitize_hex_color',
-		'capability'        => 'edit_theme_options',
-		'type'           => 'option',
+			'default'           => '#fff',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'capability'        => 'edit_theme_options',
+			'type'           => 'option',
+		));
 
-));
+	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'link_color', array(
+		'label'    => __('Mobile Menu Link Color', 'themename'),
+		'section'  => 'themename_color_scheme',
+		'settings' => 'themename_theme_options[link_color]',
+	)));
 
-$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'link_color', array(
-	'label'    => __('Mobile Menu Link Color', 'themename'),
-	'section'  => 'themename_color_scheme',
-	'settings' => 'themename_theme_options[link_color]',
-)));
-
-$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'bg_color', array(
-	'label'    => __('Mobile Menu Background Color', 'themename'),
-	'section'  => 'themename_color_scheme',
-	'settings' => 'themename_theme_options[bg_color]',
-)));
+	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'bg_color', array(
+		'label'    => __('Mobile Menu Background Color', 'themename'),
+		'section'  => 'themename_color_scheme',
+		'settings' => 'themename_theme_options[bg_color]',
+	)));
 
 
-$wp_customize->add_setting('_s_f_slide_cat', array(
-	'default'        => $default
-));
-$wp_customize->add_control( 'cat_select_box', array(
-	'settings' => '_s_f_slide_cat',
-	'label'   => 'Select Category:',
-	'section'  => '_s_f_home_slider',
-	'type'    => 'select',
-	'choices' => $cats,
-));
 }
 
 add_action('customize_register', 'mobile_register');
+
+
+
+function fontsize_register($wp_customize) {
+
+	$wp_customize->add_section('themename_text_size', array(
+			'title'    => __('Font Size Options', 'themename'),
+			'description' => '',
+			'priority' => 90,
+	));
+
+	//  =============================
+	//  H1 Font Size
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[h_one]', array(
+		'default'        => '',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+
+	));
+	$wp_customize->add_control('themethemename_h1_size', array(
+		'label'      => __('H1 Font Size (px)', 'themename'),
+		'section'    => 'themename_text_size',
+		'settings'   => 'themename_theme_options[h_one]',
+	));
+
+	//  =============================
+	//  = H2 Input                =
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[h_two]', array(
+		'default'        => '',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+
+	));
+
+	$wp_customize->add_control('themename_h2_size', array(
+			'label'      => __('H2 Font Size (px)', 'themename'),
+			'section'    => 'themename_text_size',
+			'settings'   => 'themename_theme_options[h_two]',
+	));
+
+
+	//  =============================
+	//  = H3 Input                =
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[h_three]', array(
+		'default'        => '',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+
+	));
+
+	$wp_customize->add_control('themename_h3_size', array(
+			'label'      => __('H3 Font Size (px)', 'themename'),
+			'section'    => 'themename_text_size',
+			'settings'   => 'themename_theme_options[h_three]',
+	));
+
+	//  =============================
+	//  = H4 Input                =
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[h_four]', array(
+		'default'        => '',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+
+	));
+
+	$wp_customize->add_control('themename_h4_size', array(
+			'label'      => __('H4 Font Size (px)', 'themename'),
+			'section'    => 'themename_text_size',
+			'settings'   => 'themename_theme_options[h_four]',
+	));
+
+	//  =============================
+	//  = H5 Input                =
+	//  =============================
+	$wp_customize->add_setting('themename_theme_options[h_five]', array(
+		'default'        => '',
+		'capability'     => 'edit_theme_options',
+		'type'           => 'option',
+
+	));
+
+	$wp_customize->add_control('themename_h5_size', array(
+			'label'      => __('H5 Font Size (px)', 'themename'),
+			'section'    => 'themename_text_size',
+			'settings'   => 'themename_theme_options[h_five]',
+	));
+
+
+}
+
+add_action('customize_register', 'fontsize_register');
 
 ?>

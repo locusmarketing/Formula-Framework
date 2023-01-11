@@ -619,29 +619,6 @@ function theme_layouts_customize_register( $wp_customize ) {
 
 	if ( true === $args['customize'] ) {
 
-		
-		// Add the mobile options
-		$wp_customize->add_section(
-			'layout',
-			array(
-				'title'      => esc_html__( 'Mobile Options' ),
-				'priority'   => 290,
-				'capability' => 'edit_theme_options'
-			)
-		);
-
-			/* Add the 'mobile' setting. */
-			$wp_customize->add_setting(
-				'theme_layout',
-				array(
-					'default'           => get_theme_mod( 'theme_layout', $args['default'] ),
-					'type'              => 'theme_mod',
-					'capability'        => 'edit_theme_options',
-					'sanitize_callback' => 'sanitize_html_class',
-					'transport'         => 'postMessage'
-				)
-			);
-
 		/* Add the layout section. */
 		$wp_customize->add_section(
 			'layout',
@@ -651,7 +628,6 @@ function theme_layouts_customize_register( $wp_customize ) {
 				'capability' => 'edit_theme_options'
 			)
 		);
-		
 
 		/* Add the 'layout' setting. */
 		$wp_customize->add_setting(
