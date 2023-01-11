@@ -1963,6 +1963,9 @@ header.header .mobile__nav-social .member_login {
 .row {
 	width: auto;
 }
+.header .row {
+  width: 100% !important;
+}
 .singular-post .row {
   max-width: 100% !important;
   width: 100%;
