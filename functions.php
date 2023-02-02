@@ -1742,7 +1742,7 @@ function spine_wp_footer() {
 			$top_level_items++;
 		}
 	}
-	$break_point = ceil( $top_level_items / 2 ) + 1;
+	$break_point = ceil( $top_level_items / 2 );
 ?>
 	jQuery(document).ready(function($) {
 		$("header.header").addClass("fwf-logo-center");

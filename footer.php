@@ -162,6 +162,21 @@ if ( !is_page_template('templates/home-page.php') ):
 .mobile__nav-menu .sub-menu {
 	display: none;
 }
+.header.fwf-logo-center .four {
+	display: none !important;
+}
+.header.fwf-logo-center .eight {
+	width: 100% !important;
+}
+.header.fwf-logo-center img {
+	object-fit: contain;
+}
+.header.fwf-logo-center ul.slimmenu img {
+	height: 50px;
+	padding: 6px;
+	margin: 0 auto;
+	margin-top: 6px;
+}
 </style>
 
 <script>
