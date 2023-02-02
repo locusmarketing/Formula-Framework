@@ -136,6 +136,43 @@ if ( !is_page_template('templates/home-page.php') ):
 <?php wp_footer(); ?>
 
 
+<style>
+.mobile__nav-container {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.menu-main-navigation-container, .mobile__nav-navigation, .mobile__nav-menu.open, .mobile__nav-menu {
+	padding-top: 3.5rem;
+	width: 100% !important;
+	top: 0;
+}
+.mobile__nav-social {
+	display: none;
+}
+.mobile__nav-menu.open, .mobile__nav-menu {
+	top: 0 !important;
+}
+
+.mobile__nav-menu li a {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.mobile__nav-menu .sub-menu {
+	display: none;
+}
+</style>
+
+<script>
+jQuery(document).ready(function($) {
+	$('.mobile__nav-menu .sub-menu').prev().click(function(e) {
+		e.preventDefault();
+		$(this).next().slideToggle();
+	})
+})
+</script>
+
 </body>
 
 </html>

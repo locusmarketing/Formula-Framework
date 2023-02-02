@@ -385,59 +385,6 @@ function hybrid_customize_preview_script() {
 }
 
 
-function mobile_register($wp_customize) {
-
-	$wp_customize->add_section('themename_color_scheme', array(
-			'title'    => __('Mobile Navigation Options', 'themename'),
-			'description' => '',
-			'priority' => 120,
-	));
-
-	//  =============================
-	//  = Background Color Picker              =
-	//  =============================
-	$wp_customize->add_setting('themename_theme_options[bg_color]', array(
-			'default'           => '#0000',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'capability'        => 'edit_theme_options',
-			'type'           => 'option',
-	));
-
-	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'bg_color', array(
-			'label'    => __('Mobile Menu Background Color', 'themename'),
-			'section'  => 'themename_color_scheme',
-			'settings' => 'themename_theme_options[bg_color]',
-	)));
-
-
-	//  =============================
-	//  = Links Color Picker              =
-	//  =============================
-	$wp_customize->add_setting('themename_theme_options[link_color]', array(
-			'default'           => '#fff',
-			'sanitize_callback' => 'sanitize_hex_color',
-			'capability'        => 'edit_theme_options',
-			'type'           => 'option',
-		));
-
-	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'link_color', array(
-		'label'    => __('Mobile Menu Link Color', 'themename'),
-		'section'  => 'themename_color_scheme',
-		'settings' => 'themename_theme_options[link_color]',
-	)));
-
-	$wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, 'bg_color', array(
-		'label'    => __('Mobile Menu Background Color', 'themename'),
-		'section'  => 'themename_color_scheme',
-		'settings' => 'themename_theme_options[bg_color]',
-	)));
-
-
-}
-
-add_action('customize_register', 'mobile_register');
-
-
 
 function fontsize_register($wp_customize) {
 
@@ -450,7 +397,7 @@ function fontsize_register($wp_customize) {
 	//  =============================
 	//  H1 Font Size
 	//  =============================
-	$wp_customize->add_setting('themename_theme_options[h_one]', array(
+	$wp_customize->add_setting('locus_customize[h_one]', array(
 		'default'        => '',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -459,13 +406,13 @@ function fontsize_register($wp_customize) {
 	$wp_customize->add_control('themethemename_h1_size', array(
 		'label'      => __('H1 Font Size (px)', 'themename'),
 		'section'    => 'themename_text_size',
-		'settings'   => 'themename_theme_options[h_one]',
+		'settings'   => 'locus_customize[h_one]',
 	));
 
 	//  =============================
 	//  = H2 Input                =
 	//  =============================
-	$wp_customize->add_setting('themename_theme_options[h_two]', array(
+	$wp_customize->add_setting('locus_customize[h_two]', array(
 		'default'        => '',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -475,14 +422,14 @@ function fontsize_register($wp_customize) {
 	$wp_customize->add_control('themename_h2_size', array(
 			'label'      => __('H2 Font Size (px)', 'themename'),
 			'section'    => 'themename_text_size',
-			'settings'   => 'themename_theme_options[h_two]',
+			'settings'   => 'locus_customize[h_two]',
 	));
 
 
 	//  =============================
 	//  = H3 Input                =
 	//  =============================
-	$wp_customize->add_setting('themename_theme_options[h_three]', array(
+	$wp_customize->add_setting('locus_customize[h_three]', array(
 		'default'        => '',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -492,13 +439,13 @@ function fontsize_register($wp_customize) {
 	$wp_customize->add_control('themename_h3_size', array(
 			'label'      => __('H3 Font Size (px)', 'themename'),
 			'section'    => 'themename_text_size',
-			'settings'   => 'themename_theme_options[h_three]',
+			'settings'   => 'locus_customize[h_three]',
 	));
 
 	//  =============================
 	//  = H4 Input                =
 	//  =============================
-	$wp_customize->add_setting('themename_theme_options[h_four]', array(
+	$wp_customize->add_setting('locus_customize[h_four]', array(
 		'default'        => '',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -508,13 +455,13 @@ function fontsize_register($wp_customize) {
 	$wp_customize->add_control('themename_h4_size', array(
 			'label'      => __('H4 Font Size (px)', 'themename'),
 			'section'    => 'themename_text_size',
-			'settings'   => 'themename_theme_options[h_four]',
+			'settings'   => 'locus_customize[h_four]',
 	));
 
 	//  =============================
 	//  = H5 Input                =
 	//  =============================
-	$wp_customize->add_setting('themename_theme_options[h_five]', array(
+	$wp_customize->add_setting('locus_customize[h_five]', array(
 		'default'        => '',
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -524,12 +471,23 @@ function fontsize_register($wp_customize) {
 	$wp_customize->add_control('themename_h5_size', array(
 			'label'      => __('H5 Font Size (px)', 'themename'),
 			'section'    => 'themename_text_size',
-			'settings'   => 'themename_theme_options[h_five]',
+			'settings'   => 'locus_customize[h_five]',
 	));
 
 
 }
 
 add_action('customize_register', 'fontsize_register');
+
+add_action('wp_head', 'your_function_name');
+function your_function_name(){
+?>
+<style>
+html, body {
+	background: <?php echo get_option('bg_color'); ?> !important;
+}
+</style>
+<?php
+};
 
 ?>

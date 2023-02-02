@@ -1103,6 +1103,12 @@ function pdw_spine_register_colors( $color_palette ) {
 	$color_palette->add_color(
 		array( 'id' => 'login_screen_background', 'label' => __( 'Login Screen Background', 'fitnessthemes' ), 'default' => 'aab5bf' )
 	);
+	$color_palette->add_color(
+		array( 'id' => 'mobile_menu_background', 'label' => __( 'Mobile Menu Background Color', 'fitnessthemes' ), 'default' => 'aab5bf' )
+	);
+	$color_palette->add_color(
+		array( 'id' => 'mobile_menu_link', 'label' => __( 'Mobile Menu Link Color', 'fitnessthemes' ), 'default' => 'aab5bf' )
+	);
 
 
 	/* Add rule sets for colors. */
@@ -1110,6 +1116,20 @@ function pdw_spine_register_colors( $color_palette ) {
 		'header_bg_color',
 		array(
 			'background-color'    => 'div.header'
+		)
+	);
+
+	$color_palette->add_rule_set(
+		'mobile_menu_background',
+		array(
+			'background-color'    => '.mobile__nav-menu'
+		)
+	);
+
+	$color_palette->add_rule_set(
+		'mobile_menu_link',
+		array(
+			'color'    => '.mobile__nav-menu li a'
 		)
 	);
 
@@ -1423,7 +1443,7 @@ function pdw_spine_wp_head() {
 
 	echo "<style type=\"text/css\"> .row { max-width: {$container_maxwidth}px; }";
 
-	// offset the margin top
+	// offset the marg\in top
 	if( get_theme_mod( $prefix.'_logo' ) ) {
 		$logo_img_id = pdw_spine_get_image_id( get_theme_mod( $prefix.'_logo' ) );
 		$logo_img = wp_get_attachment_image_src($logo_img_id, 'full' );
