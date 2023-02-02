@@ -1104,10 +1104,10 @@ function pdw_spine_register_colors( $color_palette ) {
 		array( 'id' => 'login_screen_background', 'label' => __( 'Login Screen Background', 'fitnessthemes' ), 'default' => 'aab5bf' )
 	);
 	$color_palette->add_color(
-		array( 'id' => 'mobile_menu_background', 'label' => __( 'Mobile Menu Background Color', 'fitnessthemes' ), 'default' => 'aab5bf' )
+		array( 'id' => 'mobile_menu_background', 'label' => __( 'Mobile Menu Background Color', 'fitnessthemes' ), 'default' => 'ffffff' )
 	);
 	$color_palette->add_color(
-		array( 'id' => 'mobile_menu_link', 'label' => __( 'Mobile Menu Link Color', 'fitnessthemes' ), 'default' => 'aab5bf' )
+		array( 'id' => 'mobile_menu_link', 'label' => __( 'Mobile Menu Link Color', 'fitnessthemes' ), 'default' => '212121' )
 	);
 
 
@@ -1747,7 +1747,7 @@ function spine_wp_footer() {
 	jQuery(document).ready(function($) {
 		$("header.header").addClass("fwf-logo-center");
 		var $getUrl = window.location;
-		var $baseUrl = $getUrl .protocol + "//" + $getUrl.host + "/" + $getUrl.pathname.split('/')[1];
+		var $baseUrl = document.location.origin;
 		var $logoImg = $('.site-logo img').attr('src');
 		var $logoPath = "<a href='" + $baseUrl + "'><img src='" + $logoImg + "' class='nav-inline-logo<?php echo $my_menu->count; ?>' /></a>";
 		$('#primary-nav > li:nth-child(<?php echo $break_point; ?>)').after($logoPath);

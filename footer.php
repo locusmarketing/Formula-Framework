@@ -162,10 +162,10 @@ if ( !is_page_template('templates/home-page.php') ):
 .mobile__nav-menu .sub-menu {
 	display: none;
 }
-.header.fwf-logo-center .four {
+.header.fwf-logo-center .four, .header.fwf-logo-center .three {
 	display: none !important;
 }
-.header.fwf-logo-center .eight {
+.header.fwf-logo-center .eight, .header.fwf-logo-center .nine {
 	width: 100% !important;
 }
 .header.fwf-logo-center img {
